@@ -100,8 +100,8 @@ Payment Gateway,Processes payments,1,service,2;3,
 
 Pre-made industry templates are available in `terraform-servicegraph-main/available_templates/`:
 - 🛍️ ecommerce_services.csv
-- 🍔 uber_eats.csv
-- 💳 paypal.csv
+- 🍔 fooddelivery.csv
+- 💳 payments.csv
 
 To use a template:
 ```bash
