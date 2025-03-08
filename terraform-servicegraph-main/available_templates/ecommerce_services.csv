@@ -1,0 +1,12 @@
+ServiceName,ServiceDescription,ServiceID,ServiceType,SupportingServices,EscPol
+Online Boutique,Boutique Store Business Service,1,business_service,2,
+Website Frontend,,2,service,3;4;5;7;8;9;11,
+Checkout Service,,3,service,5;6;7;8;9;10,
+Recommendation Service,,4,service,9,
+Shipping Service,,5,service,,
+Email Service,,6,service,,
+Currency Service,,7,service,,
+Product Catalog Service,,8,service,,
+Cart Service,,9,service,,
+Payment Service,,10,service,,
+Ad Service,,11,service,,
