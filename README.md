@@ -38,7 +38,8 @@ pip install -r requirements.txt
 
 To generate a new service architecture CSV:
 
-1. Edit `generate.py` to set your organization name:
+1. Edit `generate.py` to set your copied organization name:
+   (eg Netflix)
 ```python
 organization = "your-org-name"
 ```
@@ -48,7 +49,7 @@ organization = "your-org-name"
 python generate.py
 ```
 
-This will create a CSV file in the `service_maps` directory.
+This will create a CSV file in the `service_maps` directory, based on a imaginary architecture.
 
 ### 2. Deploy to PagerDuty ⚡
 
@@ -110,6 +111,42 @@ To remove all resources from PagerDuty:
 ```bash
 terraform destroy -var="PAGERDUTY_TOKEN=your-token-here"
 ```
+## 🧹 Prompt.
+In case of wanting to use this with your own LLM (or internal tools). I used this prompt. Replace organisation with your copy organisation:
+
+```
+You are a fictitious company like {{organization}}, operating a Service-Oriented Architecture (SOA) with 25 realistic technical services and 4 top-level business services.
+
+Instructions:
+1. Generate 28 unique technical services with realistic, specific names such as Application Web, Core Database, and Authentication. Avoid generic names like Network or DevOps.
+2. Generate 4 unique business services, categorized under business_service. These should be top-level services that rely on underlying technical services.
+3. Define dependencies among services using Service IDs (1-30), separated by ; (semicolon). Avoid circular dependencies but allow multi-level dependencies.
+4. Ensure accurate service flow, from customer-facing services to backend systems.
+5. Pay attention to how data and services might be connected in a real architecture
+
+Format the output strictly as CSV:
+   - Header row:
+     ServiceName,ServiceDescription,ServiceID,ServiceType,SupportingServices,EscPol
+   - Data rows: Each service should be represented as follows:
+     Recommendation Service,Offers personalized recommendations to users,23,service,3;5,
+   - The last four entries should have business_service as their ServiceType.
+   - Maintain exactly 32 rows of service data (excluding the header).
+   - The EscPol column should be empty but included to maintain CSV integrity.End with a ,
+   - Avoid circular dependencies
+
+Output Format (Strict CSV Requirements):
+- Do not include quotes (") around any values.
+- Do not include row numbers.
+- Do not prepend triple backticks (``` ) or any extraneous formatting.
+- Ensure a valid CSV with the correct number of columns in each row.
+- Ensure the same number of fields for each row.
+Sample Output: Name of Technical Service 1,Description for the Technical Service,2,service,3;4,
+
+ensure file integrity.
+```
+
+
+
 
 ## 📝 Important Notes
 
