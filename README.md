@@ -1,6 +1,6 @@
 # 🌟 Service Graph Generator
 
-This tool generates PagerDuty service graphs from CSV files using Terraform. Based on original code by James Pickles (https://github.com/pdt-jpickles), enhanced to include a Python service architecture generator. 
+This tool generates PagerDuty service graphs from CSV files using Terraform. Based on original code by James Pickles (https://github.com/pdt-jpickles), enhanced to include a Python service architecture generator with OpenAI. 
 
 ## 🎯 Prerequisites
 
@@ -27,6 +27,10 @@ pip install -r requirements.txt
    - Go to PagerDuty → Configuration → API Access
    - Create a new API key with full access
    - Save the token securely
+
+4. Generate a OpenAI API token:
+   - Create a new API key with 
+   - Save in the generator.py 
 
 ## 🔨 Usage
 
